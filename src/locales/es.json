@@ -1,0 +1,101 @@
+{
+  "console": {
+    "HideTemperatures": "Ocultar Temperaturas",
+    "console": "Consola",
+    "GCodeCommand": "Comandos G-Code"
+  },
+  "ConfigFiles": {
+    "HideBackupFiles": "Ocultar Archivos de Backup",
+    "HideHiddenFiles": "Ocultar Archivos Ocultos",
+    "Files": "Archivos",
+    "Config": "configuracion",
+    "Logs": "Registro",
+    "Docs": "Documentacion",
+    "ConfigExamples": "Ejemplos"
+  },
+  "Updates": {
+    "UpdateAll": "Actualizar Todo",
+    "UpToDate": "Al dia",
+    "Update": "Actualizar",
+    "RecoverRepository": "Recuperar Repositorio",
+    "Close": "Cerrar",
+    "Updates": "Actualizaciones",
+    "System": "Sistema",
+    "Packages": "paquetes"
+  },
+  "Endstops": {
+    "Endstops": "Fines de Carrera",
+    "EndStop X": "Fin de Carrera X",
+    "EndStop Y": "Fin de Carrera Y",
+    "EndStop Z": "Fin de Carrera Z",
+    "PushRefreshButton": "Presione el boton actualizar para ver el estado de los fines de carrera de la impresora"
+  },
+  "Services": {
+    "Services": "Servicios"
+  },
+  "Temperatures": {
+    "Temperatures": "Temperaturas",
+    "Cooldown": "Enfriar",
+    "Sensors": "Sensores",
+    "heater": "Calentador",
+    "Temperature": "Temperatura",
+    "Target": "Objetivo",
+    "HideGraph": "Ocultar Grafico",
+    "AutoscaleGraph": "Auto escalar grafico",
+    "Color": ""
+  },
+  "Charts": {
+    "Temperature": "Temperatura"
+  },
+  "FileManager": {
+    "CreateFile": "Crear Archivo",
+    "UploadFile": "Subir Archivo",
+    "CreateFolder": "Crear Carpeta",
+    "Delete": "Borrar",
+    "Rename": "Renombrar",
+    "Download": "Descargar",
+    "Edit": "Editar",
+    "View": "Ver",
+    "Name": "Nombre",
+    "Size": "Tamaño",
+    "Modified": "Modificado",
+    "Search": "Buscar (TODO EN MAYUSCULAS)"
+  },
+  "Outputs": {
+    "Outputs": "Salidas",
+    "Fan": "Ventilador"
+  },
+  "Hardware": {
+    "HardwareDetails": "Detalles de Hardware",
+    "Host": "Anfitrion",
+    "CPU": "CPU",
+    "Architecture": "Arquitectura",
+    "Memory": "Memoria",
+    "CPUCount": "Cantidad de CPU",
+    "OS": "SO",
+    "MCU": "MCU",
+    "Type": "Tipo",
+    "Version": "version"
+  },
+  "GCodes": {
+    "GCodeFiles": "G-Code Files"
+  },
+  "History": {
+    "History": "Historial",
+    "Job": "Tareas",
+    "Status": "Estado",
+    "Duracion": "Duracion",
+    "Filament": "Filamento",
+    "Layer": "Capa",
+    "Object Height": "Altura del Objeto",
+    "Statistics": "Estadisticas",
+    "Total Jobs": "Cantidad de tareas",
+    "Largest Job": "Tarea mas larga",
+    "Total Time": "Tiempo total",
+    "Total Average": "Tiempo Promedio",
+    "Print Total": "Tiempo Total de Impresion",
+    "Print Average": "Tiempo promedio de Impresion",
+    "Filament Total": "Total de Filamento",
+    "Filament Average": "Promedio de Filamento"
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "console": {
+    "HideTemperatures": "Hide temperatures",
+    "console": "Console",
+    "GCodeCommand": "G-Code Command"
+  },
+  "ConfigFiles": {
+    "HideBackupFiles": "Hide Backup Files",
+    "HideHiddenFiles": "Hide Hidden Files",
+    "Files": "Files",
+    "Config": "Consig",
+    "Logs": "Logs",
+    "Docs": "Docs",
+    "ConfigExamples": "Config Examples"
+  },
+  "Updates": {
+    "UpdateAll": "Update All",
+    "UpToDate": "Up to Date",
+    "Update": "Update",
+    "RecoverRepository": "",
+    "Close": "Cerrar",
+    "Updates": "Updates",
+    "System": "System",
+    "Packages": "Packages"
+  },
+  "Endstops": {
+    "Endstops": "Endstops",
+    "EndStop X": "Esndstop X",
+    "EndStop Y": "Esndstop Y",
+    "EndStop Z": "Esndstop Z",
+    "PushRefreshButton": "Press the refresh button to obtain the state of the printers endstops"
+  },
+  "Services": {
+    "Services": "Services"
+  },
+  "Temperatures": {
+    "Temperatures": "",
+    "Cooldown": "",
+    "Sensors": "",
+    "heater": "",
+    "Temperature": "",
+    "Target": "",
+    "HideGraph": "",
+    "AutoscaleGraph": "",
+    "Color": ""
+  },
+  "Charts": {
+    "Temperature": ""
+  },
+  "FileManager": {
+    "CreateFile": "",
+    "UploadFile": "",
+    "CreateFolder": "",
+    "Delete": "",
+    "Rename": "",
+    "Download": "",
+    "Edit": "",
+    "View": "",
+    "Name": "",
+    "Size": "",
+    "Modified": "",
+    "Search": ""
+  },
+  "Outputs": {
+    "Outputs": "",
+    "Fan": ""
+  },
+  "Hardware": {
+    "HardwareDetails": "",
+    "Host": "",
+    "CPU": "",
+    "Architecture": "",
+    "Memory": "",
+    "CPUCount": "",
+    "OS": "",
+    "MCU": "",
+    "Type": "",
+    "Version": ""
+  },
+  "GCodes": {
+    "GCodeFiles": ""
+  },
+  "History": {
+    "History": "",
+    "Job": "",
+    "Status": "",
+    "Duracion": "",
+    "Filament": "",
+    "Layer": "",
+    "Object Height": "",
+    "Statistics": "",
+    "Total Jobs": "",
+    "Largest Job": "",
+    "Total Time": "",
+    "Total Average": "",
+    "Print Total": "",
+    "Print Average": "",
+    "Filament Total": "",
+    "Filament Average": ""
+  }
+}
