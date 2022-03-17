@@ -17,9 +17,9 @@ import 'echarts/lib/component/legend';
 
 //Vue.config.devtools = true;
 Vue.use(plugin, { echarts });
-
-
 Vue.use(WebSocketPlugin,{ store: store })
+
+i18n.locale = store.getters['getLanguage'] === 'English' ? 'en' : 'es'
 
 new Vue({
   i18n,

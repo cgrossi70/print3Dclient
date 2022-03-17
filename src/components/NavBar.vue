@@ -2,7 +2,7 @@
   <v-container>
       <v-app-bar app clipped-left dense color="primary" dark>
        <v-app-bar-nav-icon @click="$store.state.sidebar = !$store.state.sidebar"></v-app-bar-nav-icon>
-        <v-app-bar-title>{{$store.getters.getPrinters[$store.getters.getPrinterDefault].name}}</v-app-bar-title>
+        <v-app-bar-title> {{ $store.getters['getPrinterName'] }}</v-app-bar-title>
       <v-spacer></v-spacer>
 
       <v-btn
@@ -13,16 +13,7 @@
         <v-icon>
           mdi-alert-octagon
         </v-icon>
-        Emergency Stop
-      </v-btn>
-
-      <v-btn
-        text
-      >
-        <v-icon>
-          mdi-tune-vertical
-        </v-icon>
-        Settings
+        {{ $t('Menubar.EmergencyStop') }}
       </v-btn>
 
       <v-btn text @click="$store.state.rightbar = !$store.state.rightbar">

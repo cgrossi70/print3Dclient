@@ -42,8 +42,8 @@ export default class AppClass extends Vue{
     return this.$store.getters.getSnackbar
   }
   mounted(): void {
-    this.$store.commit('setPrinterDefault',0)
-    this.$store.commit('websocket/setApiUrl',this.$store.getters.getPrinters[0].url)
+    //this.$store.commit('websocket/setApiUrl',window.location.hostname+':7125')
+    this.$store.commit('websocket/setApiUrl','192.168.0.5:7125')
     this.$socket.setUrl('ws://'+this.$store.getters['websocket/getApiUrl']+'/websocket')
     this.$socket.connect()
   }

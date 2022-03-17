@@ -1,8 +1,8 @@
 import Vue from "vue"
 import { ActionTree } from "vuex"
-import { PrinterState } from "@/store/printer/types.ts"
-import { RootState } from "@/store/types.ts"
-import {Sensor} from "@/store/printer/types.ts"
+import { PrinterState } from "@/store/printer/types"
+import { RootState } from "@/store/types"
+import {Sensor} from "@/store/printer/types"
 
 export const actions: ActionTree<PrinterState,RootState> = {
   addConsoleCommand: function (context,payload) {
@@ -77,7 +77,7 @@ export const actions: ActionTree<PrinterState,RootState> = {
 
 
       if(event.params[0]['webhooks'])
-        alert(event.params[0]['webhooks'])
+        console.log(event.params[0]['webhooks'])
       if(event.params[0]['system_stats'])
         context.commit('setMcuCpuUsage',event.params[0].system_stats)
       if(event.params[0]['mcu'])

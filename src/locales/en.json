@@ -97,5 +97,45 @@
     "Print Average": "",
     "Filament Total": "",
     "Filament Average": ""
+  },
+  "Settings": {
+    "PrinterName": "Printer Name",
+    "Language": "Language",
+    "ConfimEmergencyStop": "Confirm Emergency Stop",
+    "PrinterNameDesc": "Enter the printer name",
+    "LanguageDesc": "Choose the language",
+    "ConfimEmergencyStopDesc": "If on confirm alert displayed on emergency Stop",
+    "HideTemperature": "Hide Temperature",
+    "HideTemperatureDesc": "Hide Temperature message incoming from printer",
+    "HideGraph": "Hide Graph",
+    "HideGraphDesc": "If on Hide Temperature Graph",
+    "AutoscaleGraph": "AutoScale Graph",
+    "General": "General",
+    "Console": "console",
+    "Temperature": "Temperature"
+  },
+  "Sidebar": {
+    "Dashboard": "Dashboard",
+    "Console": "Console",
+    "GCodes": "G-Codes",
+    "History": "History",
+    "Hardware": "Hardware",
+    "Settings": "Settings",
+    "": ""
+  },
+  "Menubar": {
+    "EmergencyStop": "Emergency Stop"
+  },
+  "Rightbar": {
+    "AddPrinter": "Add Printer",
+    "Add": "Add",
+    "Cancel": "Cancel",
+    "Host": "Host",
+    "Restart": "Restart",
+    "Shutdown": "Shutdown",
+    "Services": "Services",
+    "Printers": "Printers",
+    "PrinterName": "Printer Name",
+    "IP Address": "Ip Address"
   }
 }

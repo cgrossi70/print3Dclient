@@ -114,7 +114,7 @@
 <script lang="ts">
 
 import { Component, Vue } from 'vue-property-decorator'
-import { Files } from '@/store/file_manager/types.ts'
+import { Files } from '@/store/file_manager/types'
 import FileDialogClass from '@/components/FileDialog.vue'
 import axios from 'axios'
 

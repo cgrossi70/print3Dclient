@@ -5,7 +5,7 @@ import History from "@/views/History.vue"
 import Console from "@/views/Console.vue"
 import Hardware from "@/views/Hardware.vue"
 import GCodes from "@/views/GCodes.vue"
-import ConfigFiles from "@/components/Hardware/ConfigFiles.vue"
+import Settings from "@/views/Settings.vue"
 
 Vue.use(VueRouter)
 
@@ -39,6 +39,13 @@ const routes: AppRoute[] = [
     name: 'Hardware',
     component: Hardware,
     icon: "mdi-laptop"
+
+  },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: Settings,
+    icon: "mdi-cog"
 
   },
 ]

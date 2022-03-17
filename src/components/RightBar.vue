@@ -19,17 +19,17 @@
             dark
             color="primary"
           >
-            Add Printer
+            {{ $t('Rightbar.AddPrinter') }}
           </v-toolbar>
           <v-card-text>
             <v-text-field
               v-model = "printerName"
-              label="Printer Name"
+              :label= "$t('Rightbar.PrinterName')"
             >
             </v-text-field>
             <v-text-field
               v-model = "ipAddress"
-              label="IP Address"
+              :label= "$t('Rightbar.IP Address')"
             >
             </v-text-field>
             <v-row>
@@ -39,7 +39,7 @@
                   color = "success"
                   @click = "addPrinter()"
                 >
-                  Add
+                  {{ $t('Rightbar.Add') }}
                 </v-btn>
               </v-col>
               <v-col>
@@ -49,7 +49,7 @@
                   color = "red darken-2"
                   @click = "addPrinterDialog=false"
                 >
-                  Cancel
+                  {{ $t('Rightbar.Cancel') }}
                 </v-btn>
               </v-col>
             </v-row>
@@ -74,7 +74,7 @@
           <v-expansion-panel-header color="primary">
             <div>
               <v-icon>mdi-server</v-icon>
-              Anfitrion
+              {{ $t('Rightbar.Host') }}
             </div>
 
           </v-expansion-panel-header>
@@ -83,7 +83,7 @@
               <v-col cols="1" class="my-0 pb-0">
               </v-col>
               <v-col class="my-0 pb-0 text-caption font-weight-bold">
-                Reiniciar
+                {{ $t('Rightbar.Restart') }}
               </v-col>
               <v-col class="my-0 pb-0 text-right">
                 <v-icon color="orange lighten-2">
@@ -95,7 +95,7 @@
               <v-col cols="1" class="my-0 pb-0">
               </v-col>
               <v-col class="my-0 pb-0 text-caption font-weight-bold">
-                Apagar
+                {{ $t('Rightbar.Shutdown') }}
               </v-col>
               <v-col class="my-0 pb-0 text-right">
                 <v-icon color="red lighten-2">
@@ -110,7 +110,7 @@
           <v-expansion-panel-header color="primary">
               <div>
                 <v-icon>mdi-cog</v-icon>
-                Services
+                {{ $t('Rightbar.Services') }}
               </div>
 
           </v-expansion-panel-header>
@@ -158,7 +158,7 @@
         >
           <v-card-text>
             <v-list dense>
-              <v-subheader>Impresoras</v-subheader>
+              <v-subheader>{{ $t('Rightbar.Printers') }}</v-subheader>
               <!-- <v-list-item-group
                 color="amber"
                 v-model="selectedItem"
@@ -169,7 +169,7 @@
                     {{ item.url }}
                   </v-list-item-content>
                   <v-list-item-action>
-                    <v-btn v-if="index !== 0" icon @click="deletePrinter(index)">
+                    <v-btn icon @click="deletePrinter(index)">
                       <v-icon color="white">mdi-delete</v-icon>
                     </v-btn>
                   </v-list-item-action>
@@ -182,7 +182,7 @@
               block
               color = "success"
             >
-              Add Printer
+              {{ $t('Rightbar.AddPrinter') }}
             </v-btn>
           </v-card-text>
         </v-card>

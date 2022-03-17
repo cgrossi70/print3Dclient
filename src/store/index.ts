@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import Vuex, { StoreOptions } from 'vuex'
-import { actions } from '@/store/actions.ts'
-import { getters } from '@/store/getters.ts'
-import { mutations } from '@/store/mutations.ts'
-import { RootState } from '@/store/types.ts'
-import { WebSocket } from '@/store/websocket/index.ts'
-import { Hardware } from '@/store/hardware/index.ts'
-import { Printer } from '@/store/printer/index.ts'
-import { Editor } from '@/store/editor/index.ts'
-import { FileManager } from '@/store/file_manager/index.ts'
+import { actions } from '@/store/actions'
+import { getters } from '@/store/getters'
+import { mutations } from '@/store/mutations'
+import { RootState } from '@/store/types'
+import { WebSocket } from '@/store/websocket/index'
+import { Hardware } from '@/store/hardware/index'
+import { Printer } from '@/store/printer/index'
+import { Editor } from '@/store/editor/index'
+import { FileManager } from '@/store/file_manager/index'
 
 import VuexPersistence from 'vuex-persist'
 
@@ -30,16 +30,13 @@ const state: RootState = {
     color: 'success'
   },
   config: {
-    autoscaleTempGraph: true,
-    hideTempGraph: false,
-    printers: [
-       {"name": "Local", "url": "127.0.0.1:7125"},
-       {"name": "Toshiba Sattelite", "url": "192.168.0.2:7125"},
-       {"name": "Prusa Bear Nova", "url": "192.168.0.108:7125"},
-       {"name": "Desktop", "url": "192.168.0.5:7125"}
-     ],
-     default: 0,
-     hideConsoleTemp: true,
+    autoscaleGraph: true,
+    confirmEmergencyStop: false,
+    hideGraph: false,
+    hideTemperature: true,
+    initVersion: "0.0.1",
+    language: "Spanish",
+    printerName: "Desktop Local"
   }
 }
 

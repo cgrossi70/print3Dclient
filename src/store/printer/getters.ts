@@ -1,5 +1,5 @@
 import { GetterTree } from 'vuex'
-import { Sensor,PrinterState, PrintStatistics, Position, Status, HistoryStatistics, ConsoleCommands } from '@/store/printer/types.ts'
+import { Sensor,PrinterState, PrintStatistics, Position, Status, HistoryStatistics, ConsoleCommands } from '@/store/printer/types'
 import { RootState } from '@/store/types'
 
 export const getters: GetterTree<PrinterState,RootState> = {

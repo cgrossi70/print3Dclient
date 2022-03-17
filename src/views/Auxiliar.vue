@@ -12,7 +12,7 @@
           </v-toolbar>
           <v-card-text class="font-weight-bold">
             <pre style="white-space: pre-wrap">
-              {{ $store.state.websocket}}
+              {{ $store.state.config}}
             </pre>
           </v-card-text>
         </v-card>

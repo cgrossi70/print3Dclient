@@ -30,7 +30,7 @@
               <v-list-item class = "minHeight36">
                 <v-checkbox
                   class="mt-0"
-                  v-model="hideTempGraph"
+                  v-model="hideGraph"
                   hide-details
                   :label = "$t('Temperatures.HideGraph')"
                 ></v-checkbox>
@@ -38,7 +38,7 @@
               <v-list-item class = "minHeight36">
                 <v-checkbox
                   class="mt-0"
-                  v-model="autoscaleTempGraph"
+                  v-model="autoscaleGraph"
                   hide-details
                   :label = "$t('Temperatures.AutoscaleGraph')"
                 ></v-checkbox>
@@ -109,7 +109,7 @@
 </template>
 
 <script lang="ts">
-import { Sensor } from '@/store/printer/types.ts'
+import { Sensor } from '@/store/printer/types'
 import Block from '@/components/General/Block.vue'
 import Chart from '@/components/Dashboard/Chart.vue'
 import { Component, Vue } from 'vue-property-decorator'
@@ -122,30 +122,30 @@ import { Component, Vue } from 'vue-property-decorator'
 })
 export default class TemperaturesClass extends Vue {
   settings : 0
-  hideGraph: false
-  autoscalegraph: false
   titles = [this.$t("Temperatures.Sensors"),
             this.$t("Temperatures.Color"),
             this.$t("Temperatures.heater"),
             this.$t("Temperatures.Temperature"),
             this.$t("Temperatures.Target")]
 
+
+
   get heaters(): Sensor[] {
     return this.$store.getters['printer/getSensors']
   }
 
-  get autoscaleTempGraph (): boolean {
-    return this.$store.getters['getAutoscaleTempGraph']
+  get autoscaleGraph (): boolean {
+    return this.$store.getters['getAutoscaleGraph']
   }
-  set autoscaleTempGraph (value: boolean) {
-    this.$store.dispatch('setAutoscaleTempGraph',value)
+  set autoscaleGraph (value: boolean) {
+    this.$store.dispatch('setAutoscaleGraph',value)
   }
 
-  get hideTempGraph (): boolean {
-    return this.$store.getters['getHideTempGraph']
+  get hideGraph (): boolean {
+    return this.$store.getters['getHideGraph']
   }
-  set hideTempGraph (value: boolean) {
-    this.$store.dispatch('setHideTempGraph',value)
+  set hideGraph (value: boolean) {
+    this.$store.dispatch('setHideGraph',value)
   }
 
   coolDown (): void {

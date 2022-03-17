@@ -42,7 +42,7 @@
     "Target": "Objetivo",
     "HideGraph": "Ocultar Grafico",
     "AutoscaleGraph": "Auto escalar grafico",
-    "Color": ""
+    "Color": "Color"
   },
   "Charts": {
     "Temperature": "Temperatura"
@@ -97,5 +97,45 @@
     "Print Average": "Tiempo promedio de Impresion",
     "Filament Total": "Total de Filamento",
     "Filament Average": "Promedio de Filamento"
+  },
+  "Settings": {
+    "General": "General",
+    "PrinterName": "Nombre Impresora",
+    "Language": "Idioma",
+    "ConfimEmergencyStop": "Confirmacion en parada de emergencia",
+    "PrinterNameDesc": "Ingrese el nombre de la impresora Local",
+    "LanguageDesc": "Elija el idioma de la interfaz",
+    "ConfimEmergencyStopDesc": "Si esta activado se mostrara un pedido de confimacion antes de hacer la parada de emergencia",
+    "HideTemperature": "Ocultar Temperaturas",
+    "HideTemperatureDesc": "Ocultar los mensajes de temperatura provenientes de la impresora",
+    "HideGraph": "Ocultar Grafico",
+    "HideGraphDesc": "Ocultar el grafico de Temperatura",
+    "AutoscaleGraph": "Autoescalar Grafico",
+    "Console": "Consola",
+    "Temperature": "Temperatura"
+  },
+  "Sidebar": {
+    "Dashboard": "Panel de Control",
+    "Console": "Console",
+    "GCodes": "G-Codes",
+    "History": "Historial",
+    "Hardware": "Maquina",
+    "Settings": "Configuracion",
+    "": ""
+  },
+  "Menubar": {
+    "EmergencyStop": "Parada de emergencia"
+  },
+  "Rightbar": {
+    "AddPrinter": "Agregar impresora",
+    "Add": "Agregar",
+    "Cancel": "Candelar",
+    "Host": "Anfrition",
+    "Restart": "reiniciar",
+    "Shutdown": "Apagar",
+    "Services": "servicios",
+    "Printers": "impresoras",
+    "PrinterName": "Nombre de la impresora",
+    "IP Address": "Direccion IP"
   }
 }

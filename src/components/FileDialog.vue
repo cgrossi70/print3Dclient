@@ -51,7 +51,7 @@
 </template>
 <script lang="ts">
 import {Component, Vue, Watch } from 'vue-property-decorator'
-import { FileDialog } from '@/store/file_manager/types.ts'
+import { FileDialog } from '@/store/file_manager/types'
 import axios from 'axios'
 
 const defaultFileDialog = {

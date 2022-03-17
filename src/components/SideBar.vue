@@ -6,8 +6,8 @@
             <v-list-item-title class="white--text">
                 <v-icon small class="white--text">{{ item.icon }}</v-icon>
                 <router-link :to="item.path">
-                    <span class="pl-5 white--text">
-                        {{ item.name }}
+                    <span class="text-uppercase pl-5 white--text">
+                        {{ $t('Sidebar.'+item.name) }}
                     </span>
                 </router-link>
             </v-list-item-title>

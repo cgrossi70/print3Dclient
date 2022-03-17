@@ -1,6 +1,6 @@
 import {Store} from 'vuex'
 import _Vue from 'vue'
-import {RootState} from '@/store/types.ts'
+import {RootState} from '@/store/types'
 
 declare module 'vue/types/vue' {
   interface Vue {
@@ -67,7 +67,8 @@ export class WebSocketClient {
           this.sendObj("server.files.get_directory",5644,{ "path": "gcodes", "extended": true })
           this.sendObj("server.files.get_directory",777777,{"path": this.store.getters['file_manager/getPath'], "extended": false})
           this.sendObj("server.database.post_item",4654,{"namespace": "print3Dclient","key": "initVersion", "value": "v0.0.1"})
-
+          this.sendObj("server.database.get_item",5644,{"namespace": "print3Dclient"})
+          
           this.sendObj("printer.objects.subscribe",111111,{
             "objects": {
               "print_stats": ["print_duration", "total_duration", "filament_used","filename", "state", "message"],
@@ -85,7 +86,7 @@ export class WebSocketClient {
           })
         }
         else {
-          //this.store.dispatch('ON_MESSAGE',payload.data)
+          this.store.dispatch('ON_MESSAGE',payload.data)
           this.store.dispatch('file_manager/ON_MESSAGE',payload.data)
           this.store.dispatch('hardware/ON_MESSAGE',payload.data)
           this.store.dispatch('printer/ON_MESSAGE',payload.data)

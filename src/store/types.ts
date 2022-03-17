@@ -4,11 +4,13 @@ export interface Printer {
 }
 
 export interface Config {
-  printers: Printer []
-  default: number
-  hideConsoleTemp: boolean
-  autoscaleTempGraph: boolean,
-  hideTempGraph: boolean
+  autoscaleGraph: boolean
+  confirmEmergencyStop: boolean
+  hideGraph: boolean
+  hideTemperature: boolean
+  initVersion: string
+  language: string
+  printerName: string
 }
 
 export interface Snackbar {

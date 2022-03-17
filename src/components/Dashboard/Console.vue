@@ -20,7 +20,7 @@
 
             <v-list>
                   <v-list-item class="minHeight36">
-                      <v-checkbox @change="hideTemperatures" class="mt-0" v-model="hideTemp" hide-details  :label="$t('console.HideTemperatures')"></v-checkbox>
+                      <v-checkbox @change="handleHideTemperature" class="mt-0" v-model="hideTemperature" hide-details  :label="$t('console.HideTemperatures')"></v-checkbox>
                   </v-list-item>
               </v-list>
           </v-menu>
@@ -82,7 +82,6 @@ import Block from '@/components/General/Block.vue'
 })
 export default class ConsoleClass extends Vue {
   private command = ''
-  private hideTemp = 'false'
   private items = [
       { title: 'Click Me' },
       { title: 'Click Me' },
@@ -92,8 +91,8 @@ export default class ConsoleClass extends Vue {
 
   @Prop(String) readonly divHeight: string
 
-  hideTemperatures(): void {
-    this.$store.dispatch('setHideConsoleTemp',this.hideTemp)
+  handleHideTemperature(): void {
+    this.$socket.sendObj("server.database.post_item",4654,{"namespace": "print3Dclient","key": "hideTemperature", "value": this.hideTemperature})
   }
   uppercase(event: KeyboardEvent): void {
     if(event.key === "Enter")
@@ -103,6 +102,14 @@ export default class ConsoleClass extends Vue {
       this.$socket.sendCommand(this.command)
       this.command = ''
   }
+
+  get hideTemperature(): boolean{
+    return this.$store.getters.getHideTemperature
+  }
+  set hideTemperature(value: boolean ){
+    this.$store.state.config.hideTemperature = value
+  }
+
 
 }
 </script>
