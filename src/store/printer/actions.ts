@@ -44,10 +44,10 @@ export const actions: ActionTree<PrinterState,RootState> = {
         if( context.getters.getHideConsoleTemp && !myRegExp.test( event.params[0]) ||
             !context.getters.getHideConsoleTemp){
               context.commit('addConsoleCommand',{
-                  "date": (new Date()).toLocaleTimeString("es-AR"),
-                  "color": "red",
-                  "message": event.params[0]
-              })
+                "date": (new Date()).toLocaleTimeString("es-AR"),
+                "color": "red",
+                "message": event.params[0]
+            })
         }
     }
     if (event.method === 'notify_update_response'){

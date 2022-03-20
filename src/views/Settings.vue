@@ -5,7 +5,7 @@
         <v-expansion-panels accordion>
           <v-expansion-panel >
             <v-expansion-panel-header class="my-0 py-0" color="indigo lighten-4">
-              <span class="text-button">{{ $t('Settings.General') }}</span>
+              <span class="text-button">{{ $t('Settings.Sections.General') }}</span>
             </v-expansion-panel-header>
             <v-expansion-panel-content>
               <General/>
@@ -13,7 +13,7 @@
           </v-expansion-panel >
           <v-expansion-panel >
             <v-expansion-panel-header  class="my-0 py-0" color="indigo lighten-4">
-              <span class="text-button">{{ $t('Settings.Console') }}</span>
+              <span class="text-button">{{ $t('Settings.Sections.Console') }}</span>
             </v-expansion-panel-header>
             <v-expansion-panel-content>
               <Console/>
@@ -21,7 +21,7 @@
           </v-expansion-panel >
           <v-expansion-panel >
             <v-expansion-panel-header  class="my-0 py-0" color="indigo lighten-4">
-              <span class="text-button">{{ $t('Settings.Temperature') }}</span>
+              <span class="text-button">{{ $t('Settings.Sections.Temperature') }}</span>
             </v-expansion-panel-header>
             <v-expansion-panel-content>
               <Temperature/>
@@ -36,12 +36,6 @@
 </template>
 <script lang="ts">
 
-interface Headers {
-  text: string,
-  align: string,
-  sortable: boolean,
-  value: string,
-}
 
 import { Component, Vue } from 'vue-property-decorator'
 import Block from '@/components/General/Block.vue'

@@ -28,21 +28,23 @@ import FormRowInput from '@/components/General/FormRowInput.vue'
   }
 })
 export default class General extends Vue {
-  
+
   languages = ['Spanish', 'English']
 
   get printerName (): string {
     return this.$store.getters['getPrinterName']
   }
   set printerName (name: string ) {
-    this.$store.dispatch('setPrinterName',name)
+    //this.$store.dispatch('setPrinterName',name)
+    this.$store.dispatch('setConfigItem',{"item": "printerName","value": name})
   }
 
   get confirmEmergencyStop (): boolean {
     return this.$store.getters['getConfirmEmergencyStop']
   }
   set confirmEmergencyStop (value: boolean ) {
-    this.$store.dispatch('setConfirmEmergencyStop',value)
+    //this.$store.dispatch('setConfirmEmergencyStop',value)
+    this.$store.dispatch('setConfigItem',{"item": "confirmEmergencyStop","value": value})
   }
 
   get language (): string {
@@ -50,7 +52,8 @@ export default class General extends Vue {
   }
   set language (language: string ) {
     this.$i18n.locale = language === 'English' ? 'en' : 'es'
-    this.$store.dispatch('setLanguage',language)
+    //this.$store.dispatch('setLanguage',language)
+    this.$store.dispatch('setConfigItem',{"item": "language","value": language})
   }
 }
 </script>

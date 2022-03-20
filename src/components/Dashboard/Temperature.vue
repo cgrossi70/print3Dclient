@@ -5,13 +5,15 @@
   <v-container>
     <Block :title="$t('Temperatures.Temperatures')">
       <template v-slot:buttons>
-        <v-btn
+        <!-- <v-btn
+            v-if="$store.state.config.preheats.length === 1"
             text
             dark
             @click="coolDown"
         >
             {{ $t('Temperatures.Cooldown') }}
-        </v-btn>
+        </v-btn> -->
+        
         <v-menu offset-y left>
           <template v-slot:activator="{on,attrs}">
             <v-btn
@@ -19,7 +21,31 @@
               text
               v-bind="attrs"
               v-on="on"
-              small
+              x-small
+            >
+              <v-icon color="amber">mdi-fire</v-icon>
+            </v-btn>
+          </template>
+          <v-list>
+              <v-list-item 
+                v-for="(preheat,id) in $store.state.config.preheats" 
+                :key="id" 
+                class = "minHeight36"
+                @click="handlePreheat(preheat.script)"
+              >
+                {{ preheat.name }}  
+              </v-list-item>
+          </v-list>
+        </v-menu>
+        
+        <v-menu offset-y left>
+          <template v-slot:activator="{on,attrs}">
+            <v-btn
+              color="prymary"
+              text
+              v-bind="attrs"
+              v-on="on"
+              x-small
             >
               <v-icon>
                 mdi-cog
@@ -98,7 +124,7 @@
             </tbody>
             </template>
         </v-simple-table>
-        <v-card v-if="!hideTempGraph" >
+        <v-card v-if="!hideGraph" >
           <div style="height: 300px; margin: 0px; padding :0px;">
             <Chart/>
           </div>
@@ -128,8 +154,6 @@ export default class TemperaturesClass extends Vue {
             this.$t("Temperatures.Temperature"),
             this.$t("Temperatures.Target")]
 
-
-
   get heaters(): Sensor[] {
     return this.$store.getters['printer/getSensors']
   }
@@ -138,14 +162,21 @@ export default class TemperaturesClass extends Vue {
     return this.$store.getters['getAutoscaleGraph']
   }
   set autoscaleGraph (value: boolean) {
-    this.$store.dispatch('setAutoscaleGraph',value)
+    this.$store.dispatch("setConfigItem", {item: "autoscaleGraph", value: value });
   }
 
   get hideGraph (): boolean {
     return this.$store.getters['getHideGraph']
   }
   set hideGraph (value: boolean) {
-    this.$store.dispatch('setHideGraph',value)
+    this.$store.dispatch("setConfigItem", { item: "hideGraph", value: value });
+  }
+
+  handlePreheat(script: string): void{
+    const commands = script.split('\n')
+    commands.forEach(command => {
+      this.$socket.sendCommand(command)
+    });
   }
 
   coolDown (): void {

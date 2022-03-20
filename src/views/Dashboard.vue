@@ -12,7 +12,7 @@
             <v-col xl="5" lg="7">
                 <v-row>
                     <Temperature v-if="!isError"/>
-                    <!--<Temperature/>-->
+                    <Temperature/>
                 </v-row>
                 <v-row v-if="$vuetify.breakpoint.name !== 'xl'">
                     <Console v-if="isConnected" divHeight="divComponent"/>

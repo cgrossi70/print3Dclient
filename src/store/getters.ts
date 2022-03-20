@@ -1,4 +1,4 @@
-import { RootState, Printer, Config, Snackbar } from "@/store/types"
+import { RootState, Config, Snackbar } from "@/store/types"
 import { GetterTree } from "vuex"
 
 export const getters: GetterTree<RootState,RootState> = {

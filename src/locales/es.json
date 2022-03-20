@@ -42,7 +42,8 @@
     "Target": "Objetivo",
     "HideGraph": "Ocultar Grafico",
     "AutoscaleGraph": "Auto escalar grafico",
-    "Color": "Color"
+    "Color": "Color",
+    "Preheat": "Precalentar"
   },
   "Charts": {
     "Temperature": "Temperatura"
@@ -62,8 +63,7 @@
     "Search": "Buscar (TODO EN MAYUSCULAS)"
   },
   "Outputs": {
-    "Outputs": "Salidas",
-    "Fan": "Ventilador"
+    "Outputs": "Salidas"
   },
   "Hardware": {
     "HardwareDetails": "Detalles de Hardware",
@@ -99,6 +99,11 @@
     "Filament Average": "Promedio de Filamento"
   },
   "Settings": {
+    "Sections": {
+      "General": "General",
+      "Console": "Consola",
+      "Temperature": "Temperatura"
+    },
     "General": "General",
     "PrinterName": "Nombre Impresora",
     "Language": "Idioma",
@@ -108,19 +113,30 @@
     "ConfimEmergencyStopDesc": "Si esta activado se mostrara un pedido de confimacion antes de hacer la parada de emergencia",
     "HideTemperature": "Ocultar Temperaturas",
     "HideTemperatureDesc": "Ocultar los mensajes de temperatura provenientes de la impresora",
-    "HideGraph": "Ocultar Grafico",
-    "HideGraphDesc": "Ocultar el grafico de Temperatura",
-    "AutoscaleGraph": "Autoescalar Grafico",
-    "Console": "Consola",
-    "Temperature": "Temperatura"
+    "ConsoleHeight": "",
+    "ConsoleHeightDesc": "",
+    "Temperature": {
+      "HideGraph": "Ocultar Grafico",
+      "HideGraphDesc": "Ocultar el grafico de Temperatura",
+      "AutoscaleGraph": "Autoescalar Grafico",
+      "Preheat": "Precalentamiento",
+      "PreheatDesc": "Opciones de precalentamiento para el extrusor y cama caliente",
+      "AddPreheat": "Agregar Precalentamietno",
+      "Title": "Titulo",
+      "G-Codes": "G-Codes",
+      "Add": "Agregar",
+      "Cancel": "Cancelar",
+      "Actions": "Acciones",
+      "Save": "Guardar"
+    }
   },
   "Sidebar": {
     "Dashboard": "Panel de Control",
-    "Console": "Console",
+    "Console": "Consola",
     "GCodes": "G-Codes",
     "History": "Historial",
-    "Hardware": "Maquina",
     "Settings": "Configuracion",
+    "Hardware": "Maquina",
     "": ""
   },
   "Menubar": {

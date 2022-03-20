@@ -11,6 +11,12 @@ export interface Config {
   initVersion: string
   language: string
   printerName: string
+  preheats: Preheat[] 
+}
+
+export interface Preheat {
+  name:  string,
+  script: string
 }
 
 export interface Snackbar {

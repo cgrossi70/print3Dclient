@@ -36,7 +36,8 @@ const state: RootState = {
     hideTemperature: true,
     initVersion: "0.0.1",
     language: "Spanish",
-    printerName: "Desktop Local"
+    printerName: "Desktop Local",
+    preheats: [{"name": "Cool","script": "TURN_OFF_HEATERS"}]
   }
 }
 

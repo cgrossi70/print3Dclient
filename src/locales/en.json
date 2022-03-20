@@ -42,7 +42,8 @@
     "Target": "",
     "HideGraph": "",
     "AutoscaleGraph": "",
-    "Color": ""
+    "Color": "",
+    "Preheat": ""
   },
   "Charts": {
     "Temperature": ""
@@ -62,8 +63,7 @@
     "Search": ""
   },
   "Outputs": {
-    "Outputs": "",
-    "Fan": ""
+    "Outputs": ""
   },
   "Hardware": {
     "HardwareDetails": "",
@@ -107,20 +107,24 @@
     "ConfimEmergencyStopDesc": "If on confirm alert displayed on emergency Stop",
     "HideTemperature": "Hide Temperature",
     "HideTemperatureDesc": "Hide Temperature message incoming from printer",
-    "HideGraph": "Hide Graph",
-    "HideGraphDesc": "If on Hide Temperature Graph",
-    "AutoscaleGraph": "AutoScale Graph",
-    "General": "General",
-    "Console": "console",
-    "Temperature": "Temperature"
+    "ConsoleHeight": "",
+    "ConsoleHeightDesc": "",
+    "Temperature": {
+      "HideGraph": "",
+      "HideGraphDesc": "",
+      "AutoscaleGraph": "",
+      "Preheat": "",
+      "PreheatDesc": "",
+      "Actions": "",
+      "AddPreheat": "",
+      "Title": "",
+      "G-Codes": "",
+      "Add": "",
+      "Cancel": "",
+      "Save": ""
+    }
   },
   "Sidebar": {
-    "Dashboard": "Dashboard",
-    "Console": "Console",
-    "GCodes": "G-Codes",
-    "History": "History",
-    "Hardware": "Hardware",
-    "Settings": "Settings",
     "": ""
   },
   "Menubar": {

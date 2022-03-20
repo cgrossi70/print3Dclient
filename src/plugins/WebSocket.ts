@@ -68,7 +68,9 @@ export class WebSocketClient {
           this.sendObj("server.files.get_directory",777777,{"path": this.store.getters['file_manager/getPath'], "extended": false})
           this.sendObj("server.database.post_item",4654,{"namespace": "print3Dclient","key": "initVersion", "value": "v0.0.1"})
           this.sendObj("server.database.get_item",5644,{"namespace": "print3Dclient"})
-          
+
+          //this.sendObj("server.database.post_item",5644,{"namespace": "print3Dclient","key": "preheats", "value": [{ "name": "Cool", "script":"TURN_OFF_HEATERS"}]})
+
           this.sendObj("printer.objects.subscribe",111111,{
             "objects": {
               "print_stats": ["print_duration", "total_duration", "filament_used","filename", "state", "message"],
