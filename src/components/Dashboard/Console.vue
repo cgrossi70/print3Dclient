@@ -20,7 +20,7 @@
 
             <v-list>
                   <v-list-item class="minHeight36">
-                      <v-checkbox @change="handleHideTemperature" class="mt-0" v-model="hideTemperature" hide-details  :label="$t('console.HideTemperatures')"></v-checkbox>
+                      <v-checkbox class="mt-0" v-model="hideTemperature" hide-details  :label="$t('console.HideTemperatures')"></v-checkbox>
                   </v-list-item>
               </v-list>
           </v-menu>
@@ -53,7 +53,7 @@
           </v-row>
           <v-row class="my-0">
              <v-card-text class="py-0">
-              <div  style="overflow-y: auto;" :class="`${divHeight}`">
+              <div  :style="`overflow-y: auto; height: ${divHeight};`">
 
                      <v-simple-table dense>
                          <tbody>
@@ -91,9 +91,6 @@ export default class ConsoleClass extends Vue {
 
   @Prop(String) readonly divHeight: string
 
-  handleHideTemperature(): void {
-    this.$socket.sendObj("server.database.post_item",4654,{"namespace": "print3Dclient","key": "hideTemperature", "value": this.hideTemperature})
-  }
   uppercase(event: KeyboardEvent): void {
     if(event.key === "Enter")
       this.send();
@@ -107,7 +104,7 @@ export default class ConsoleClass extends Vue {
     return this.$store.getters.getHideTemperature
   }
   set hideTemperature(value: boolean ){
-    this.$store.state.config.hideTemperature = value
+    this.$store.dispatch('setConfigItem',{"section": "console","key": "hideTemperature", "value": value})
   }
 
 

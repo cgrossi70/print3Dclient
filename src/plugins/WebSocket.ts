@@ -44,11 +44,19 @@ export class WebSocketClient {
     this.socket.onmessage = (payload) => {
         const event = JSON.parse(payload.data)
         if(event.error){
-          this.store.dispatch('setSnackbar',{
-            message: event.error.message + ' ('+ event.id +')',
-            color: 'red',
-            active: true
-          })
+          if(  event.error.message === "Namespace 'print3Dclient' not found"){
+            this.sendObj("server.database.post_item",4654,{
+              "namespace": "print3Dclient",
+              "key": "config", 
+              "value": this.store.state.config})
+          }
+          else {
+            this.store.dispatch('setSnackbar',{
+              message: event.error.message + ' ('+ event.id +')',
+              color: 'red',
+              active: true
+            })
+          }
         }
 
 
@@ -66,10 +74,19 @@ export class WebSocketClient {
           this.sendObj("server.history.totals", 5656)
           this.sendObj("server.files.get_directory",5644,{ "path": "gcodes", "extended": true })
           this.sendObj("server.files.get_directory",777777,{"path": this.store.getters['file_manager/getPath'], "extended": false})
-          this.sendObj("server.database.post_item",4654,{"namespace": "print3Dclient","key": "initVersion", "value": "v0.0.1"})
-          this.sendObj("server.database.get_item",5644,{"namespace": "print3Dclient"})
 
-          //this.sendObj("server.database.post_item",5644,{"namespace": "print3Dclient","key": "preheats", "value": [{ "name": "Cool", "script":"TURN_OFF_HEATERS"}]})
+          //this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "config"})
+          //this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "initVersion"})
+          /*this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "preheats"})
+          this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "printerName"})
+          this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "language"})
+          this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "hideTemperature"})
+          this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "hideGraph"})
+          this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "consoleHeight",})
+          this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "confirmEmergencyStop"})
+          this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "autoscaleGraph"})*/
+
+          this.sendObj("server.database.get_item",5644,{"namespace": "print3Dclient"})
 
           this.sendObj("printer.objects.subscribe",111111,{
             "objects": {
@@ -99,6 +116,7 @@ export class WebSocketClient {
     this.socket.onerror = () => {
       this.store.dispatch('websocket/setConnectedState',false)
       if(this.store.getters['websocket/getReconnectCount'] === this.maxReconnects)
+
          this.store.dispatch('websocket/setReconnectErrorState',true)
       if(this.store.getters['websocket/getReconnectCount'] < this.maxReconnects){
         this.store.dispatch('websocket/incrementReconnectCount')

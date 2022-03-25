@@ -2,6 +2,7 @@ import { MutationTree } from "vuex"
 import { RootState } from "@/store/types"
 
 export interface Item {
+  section: string,
   item:   string,
   value:  string
 }
@@ -9,23 +10,30 @@ export interface Item {
 export const mutations: MutationTree<RootState> = {
 
   deleteConfigArrayItem(state,payload){
-    state.config.preheats.splice(state.config.preheats.indexOf(payload.id),1)
+    // @ts-expect-error: Not reachable error
+    state.config[payload.section][payload.key].splice(state.config[payload.section][payload.key].indexOf(payload.value),1)
   },
 
   editConfigArrayItem(state,payload){
-    alert(payload.value.id)
-    state.config.preheats[payload.value.id].name  = payload.value.name
-    state.config.preheats[payload.value.id].script = payload.value.script
+    // @ts-expect-error: Not reachable error
+    state.config[payload.section][payload.key][payload.value.id].name  = payload.value.name
+    // @ts-expect-error: Not reachable error
+    state.config[payload.section][payload.key][payload.value.id].script = payload.value.script
   },
 
   addConfigArrayItem(state: RootState, payload: Item){
     // @ts-expect-error: Not reachable error
-    state.config[payload.item].push(payload.value)
+    state.config[payload.section][payload.key].push(payload.value)
   },
 
   setConfigItem(state: RootState, payload: Item){
+  console.log(payload)
+  if(!payload['section']) 
     // @ts-expect-error: Not reachable error
-    state.config[payload.item] = payload.value
+    state.config[payload.key] = payload.value
+  else   
+    // @ts-expect-error: Not reachable error
+    state.config[payload.section][payload.key] = payload.value
   },
 
   setSnackbar (state,payload): void {
@@ -36,7 +44,7 @@ export const mutations: MutationTree<RootState> = {
   },
 
   setConfig(state,payload) {
-    state.config = payload.value
+    state.config = payload
   }
 
 }

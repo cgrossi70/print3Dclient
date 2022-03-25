@@ -102,7 +102,8 @@
     "Sections": {
       "General": "General",
       "Console": "Consola",
-      "Temperature": "Temperatura"
+      "Temperature": "Temperatura",
+      "Macros": "Macros"
     },
     "General": "General",
     "PrinterName": "Nombre Impresora",
@@ -153,5 +154,8 @@
     "Printers": "impresoras",
     "PrinterName": "Nombre de la impresora",
     "IP Address": "Direccion IP"
+  },
+  "Macros": {
+    "Macros": "Macros"
   }
 }

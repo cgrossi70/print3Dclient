@@ -36,7 +36,7 @@
               </thead>
               <tbody>
                 <tr
-                  v-for="(item,id) in $store.state.config.preheats"
+                  v-for="(item,id) in $store.state.config.temperature.preheats"
                   :key="id"
                 >
                   <td class="text-button">{{ item.name }}</td>
@@ -131,8 +131,8 @@ export default class Temperature extends Vue {
 
   // Muestra el form de edicion
   handleEditPreheat(preheatId: number): void {
-    this.name         = this.$store.state.config.preheats[preheatId].name 
-    this.script       = this.$store.state.config.preheats[preheatId].script 
+    this.name         = this.$store.state.config.temperature.preheats[preheatId].name 
+    this.script       = this.$store.state.config.temperature.preheats[preheatId].script 
     this.modifiedId   = preheatId
     this.modeModify   = true
     this.modeAdd      = false
@@ -153,7 +153,8 @@ export default class Temperature extends Vue {
   // Borra el preheat modificado
   handleDelete(preheatId: number): void{
     this.$store.dispatch('deleteConfigArrayItem',{
-      "item": "preheats",
+      "section": "temperature",
+      "key": "preheats",
       "value": preheatId
     })
   }
@@ -161,7 +162,8 @@ export default class Temperature extends Vue {
   // Guarda el preheat modificado
   handleSave(): void{
     this.$store.dispatch('editConfigArrayItem',{
-      "item": "preheats",
+      "section": "temperature",
+      "key": "preheats",
       "value": {
         id:     this.modifiedId,
         name:   this.name,
@@ -177,7 +179,8 @@ export default class Temperature extends Vue {
   // Agrega el preheat nuevo
   handleAdd(): void {
     this.$store.dispatch('addConfigArrayItem',{
-      "item": "preheats",
+      "section": "temperature",
+      "key": "preheats",
       "value": {
         name:   this.name,
         script: this.script
@@ -202,17 +205,14 @@ export default class Temperature extends Vue {
     return this.$store.getters["getAutoscaleGraph"];
   }
   set autoscaleGraph(value: boolean) {
-    this.$store.dispatch("setConfigItem", {
-      item: "autoscaleGraph",
-      value: value,
-    });
+    this.$store.dispatch("setConfigItem", {"section": "temperature", "key": "autoscaleGraph", "value": value });
   }
 
   get hideGraph(): boolean {
     return this.$store.getters["getHideGraph"];
   }
   set hideGraph(value: boolean) {
-    this.$store.dispatch("setConfigItem", { item: "hideGraph", value: value });
+    this.$store.dispatch("setConfigItem", { "section": "temperature", "key": "hideGraph", "value": value });
   }
 }
 </script>

@@ -141,5 +141,8 @@
     "Printers": "Printers",
     "PrinterName": "Printer Name",
     "IP Address": "Ip Address"
+  },
+  "Macros": {
+    "Macros": ""
   }
 }

@@ -245,10 +245,10 @@ export default class ChartClass extends Vue {
     }
   }
   get autoscaleTempGraph () {
-    return this.$store.getters['getAutoscaleTempGraph']
+    return this.$store.getters['getAutoscaleGraph']
   }
   get hideTempGraph () {
-    return this.$store.getters['getHideTempGraph']
+    return this.$store.getters['getHideGraph']
   }
   get masterStatus() {
     return this.$store.getters['printer/getMasterStatus'].state

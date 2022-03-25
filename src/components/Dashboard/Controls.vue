@@ -134,7 +134,7 @@
                 dense
                 suffix="%"
                 prepend-inner-icon="mdi-restart"
-                height="15px"
+                height="35px"
                 outlined
                 @click:prepend-inner = "resetFlow"
                 @keydown.enter="flowChange"
@@ -149,7 +149,7 @@
                 dense
                 suffix="%"
                 prepend-inner-icon="mdi-restart"
-                height="15px"
+                height="35px"
                 @click:prepend-inner = "resetFeedSpped"
                 @keydown.enter="feedSpeedChange"
                 @blur="feedSpeedChange"
@@ -186,7 +186,7 @@
 </template>
 
 <script lang="ts">
-import { Sensor } from '@/store/printer/types.ts'
+import { Sensor } from '@/store/printer/types'
 import { Component, Vue} from 'vue-property-decorator'
 import Block from '@/components/General/Block.vue'
 @Component({

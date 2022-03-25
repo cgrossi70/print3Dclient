@@ -27,6 +27,14 @@
               <Temperature/>
             </v-expansion-panel-content>
           </v-expansion-panel>
+          <v-expansion-panel >
+            <v-expansion-panel-header  class="my-0 py-0" color="indigo lighten-4">
+              <span class="text-button">{{ $t('Settings.Sections.Macros') }}</span>
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <Macros/>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
 
         </v-expansion-panels>
         <Auxiliar/>
@@ -42,6 +50,7 @@ import Block from '@/components/General/Block.vue'
 import General from '@/components/Settings/General.vue'
 import Temperature from '@/components/Settings/Temperature.vue'
 import Console from '@/components/Settings/Console.vue'
+import Macros from '@/components/Settings/Macros.vue'
 import Auxiliar from '@/views/Auxiliar.vue'
 @Component({
   components: {
@@ -49,7 +58,8 @@ import Auxiliar from '@/views/Auxiliar.vue'
     General,
     Console,
     Temperature,
-    Auxiliar
+    Auxiliar,
+    Macros
   }
 })
 export default class Settings extends Vue {

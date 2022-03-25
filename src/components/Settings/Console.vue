@@ -32,10 +32,10 @@ import FormRowInput from '@/components/General/FormRowInput.vue'
 export default class Console extends Vue {
 
   get consoleHeight (): number {
-    return this.$store.state.config.consoleHeight
+    return this.$store.state.config.console.consoleHeight
   }
   set consoleHeight (value: number ) {
-    this.$store.dispatch('setConfigItem',{"item": "consoleHeight","value": value})
+    this.$store.dispatch('setConfigItem',{"section": "console","key": "consoleHeight","value": value})
   }
 
   get hideTemperature (): boolean {
@@ -43,7 +43,7 @@ export default class Console extends Vue {
   }
   set hideTemperature (value: boolean ) {
     // this.$store.dispatch('hideTemperature', value)
-    this.$store.dispatch('setConfigItem',{"item": "hideTemperature","value": value})
+    this.$store.dispatch('setConfigItem',{"section": "console","key": "hideTemperature","value": value})
   }
 }
 </script>

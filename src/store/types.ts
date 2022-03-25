@@ -3,15 +3,27 @@ export interface Printer {
   url: string
 }
 
-export interface Config {
-  autoscaleGraph: boolean
-  confirmEmergencyStop: boolean
-  hideGraph: boolean
-  hideTemperature: boolean
-  initVersion: string
+export interface General {
   language: string
   printerName: string
+  confirmEmergencyStop: boolean
+}
+
+export interface Temperature {
+  autoscaleGraph: boolean
+  hideGraph: boolean
   preheats: Preheat[] 
+}
+export interface Console {
+  hideTemperature: boolean
+  consoleHeight: number
+}
+
+export interface Config {
+  initVersion: string 
+  console: Console
+  temperature: Temperature
+  general: General
 }
 
 export interface Preheat {

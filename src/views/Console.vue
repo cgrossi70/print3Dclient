@@ -1,6 +1,6 @@
 <template>
   <v-container>
-      <Console divHeight="divRoute"/>
+      <Console divHeight="calc(100vh - 230px)"/>
   </v-container>
 </template>
 

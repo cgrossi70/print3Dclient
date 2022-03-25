@@ -15,22 +15,22 @@ export const getters: GetterTree<RootState,RootState> = {
     return state.snackbar;
   },
   getHideTemperature(state){
-    return state.config.hideTemperature
+    return state.config.console.hideTemperature
   },
   getAutoscaleGraph(state){
-    return state.config.autoscaleGraph
+    return state.config.temperature.autoscaleGraph
   },
-  getHideGraph(state){
-    return state.config.hideGraph
+  getHideGraph(state){ 
+    return state.config.temperature.hideGraph
   },
   getLanguage(state){
-    return state.config.language
+    return state.config.general.language
   },
   getPrinterName(state){
-    return state.config.printerName
+    return state.config.general.printerName
   },
   getConfirmEmergencyStop(state){
-    return state.config.confirmEmergencyStop
+    return state.config.general.confirmEmergencyStop
   }
 
 }

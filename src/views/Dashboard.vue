@@ -12,16 +12,16 @@
             <v-col xl="5" lg="7">
                 <v-row>
                     <Temperature v-if="!isError"/>
-                    <Temperature/>
+                    <Console v-if="isConnected" :divHeight="consoleHeight"/>
                 </v-row>
                 <v-row v-if="$vuetify.breakpoint.name !== 'xl'">
-                    <Console v-if="isConnected" divHeight="divComponent"/>
+                    <Console v-if="isConnected" :divHeight="consoleHeight"/>
                 </v-row>
 
             </v-col >
             <v-col xl="4" v-if="$vuetify.breakpoint.name === 'xl'">
               <v-row>
-                <Console v-if="isConnected" divHeight="divComponent"/>
+                <Macros/>
               </v-row>
               <v-row>
                 <Auxiliar/>
@@ -40,6 +40,7 @@ import Console from '@/components/Dashboard/Console.vue'
 import PrinterStatus from '@/components/Dashboard/PrinterStatus.vue'
 import MoonrakerError from '@/components/Dashboard/MoonrakerError.vue'
 import Outputs from '@/components/Dashboard/Outputs.vue'
+import Macros from '@/components/Dashboard/Macros.vue'
 import Auxiliar from '@/views/Auxiliar.vue'
 
 @Component({
@@ -52,9 +53,13 @@ import Auxiliar from '@/views/Auxiliar.vue'
       PrinterStatus,
       Outputs,
       MoonrakerError,
+      Macros
   }
 })
 export default class DashboardClass extends Vue {
+  get consoleHeight(): string{
+    return this.$store.state.config.console.consoleHeight+"px"
+  }
   get isConnected (): boolean {
     return this.$store.getters['websocket/getConnected']
   }
@@ -66,6 +71,7 @@ export default class DashboardClass extends Vue {
       this.masterStatus === 'shutdown' ||
       this.masterStatus === 'startup';
   }
+
 }
 </script>
 <style>

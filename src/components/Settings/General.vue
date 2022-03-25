@@ -20,6 +20,7 @@
     </v-card>
 </template>
 <script lang="ts">
+
 import { Component, Vue } from 'vue-property-decorator'
 import FormRowInput from '@/components/General/FormRowInput.vue'
 @Component ({
@@ -33,10 +34,11 @@ export default class General extends Vue {
 
   get printerName (): string {
     return this.$store.getters['getPrinterName']
+    
   }
   set printerName (name: string ) {
     //this.$store.dispatch('setPrinterName',name)
-    this.$store.dispatch('setConfigItem',{"item": "printerName","value": name})
+    this.$store.dispatch('setConfigItem',{"section": "general","key": "printerName", "value": name})
   }
 
   get confirmEmergencyStop (): boolean {
@@ -44,7 +46,7 @@ export default class General extends Vue {
   }
   set confirmEmergencyStop (value: boolean ) {
     //this.$store.dispatch('setConfirmEmergencyStop',value)
-    this.$store.dispatch('setConfigItem',{"item": "confirmEmergencyStop","value": value})
+    this.$store.dispatch('setConfigItem',{"section": "general","key": "confirmEmergencyStop", "value": value})
   }
 
   get language (): string {
@@ -53,7 +55,7 @@ export default class General extends Vue {
   set language (language: string ) {
     this.$i18n.locale = language === 'English' ? 'en' : 'es'
     //this.$store.dispatch('setLanguage',language)
-    this.$store.dispatch('setConfigItem',{"item": "language","value": language})
+    this.$store.dispatch('setConfigItem',{"section": "general","key": "language", "value": language})
   }
 }
 </script>

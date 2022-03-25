@@ -28,7 +28,7 @@
           </template>
           <v-list>
               <v-list-item 
-                v-for="(preheat,id) in $store.state.config.preheats" 
+                v-for="(preheat,id) in $store.state.config.temperature.preheats" 
                 :key="id" 
                 class = "minHeight36"
                 @click="handlePreheat(preheat.script)"
@@ -162,14 +162,14 @@ export default class TemperaturesClass extends Vue {
     return this.$store.getters['getAutoscaleGraph']
   }
   set autoscaleGraph (value: boolean) {
-    this.$store.dispatch("setConfigItem", {item: "autoscaleGraph", value: value });
+    this.$store.dispatch("setConfigItem", { "section": "temperature","key": "autoscaleGraph", "value": value });
   }
 
   get hideGraph (): boolean {
     return this.$store.getters['getHideGraph']
   }
   set hideGraph (value: boolean) {
-    this.$store.dispatch("setConfigItem", { item: "hideGraph", value: value });
+    this.$store.dispatch("setConfigItem", { "section": "temperature","key": "hideGraph", value: value });
   }
 
   handlePreheat(script: string): void{

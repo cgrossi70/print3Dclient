@@ -10,15 +10,15 @@ import { Printer } from '@/store/printer/index'
 import { Editor } from '@/store/editor/index'
 import { FileManager } from '@/store/file_manager/index'
 
-import VuexPersistence from 'vuex-persist'
+// import VuexPersistence from 'vuex-persist'
 
 // defino la persistenc
-const vuexLocal = new VuexPersistence<RootState>({
+/*const vuexLocal = new VuexPersistence<RootState>({
   storage: window.localStorage,
   reducer: (state: RootState) => ({
     config: state.config, // Only persist config
   })
-})
+})*/
 
 // default State
 const state: RootState = {
@@ -30,14 +30,21 @@ const state: RootState = {
     color: 'success'
   },
   config: {
-    autoscaleGraph: true,
-    confirmEmergencyStop: false,
-    hideGraph: false,
-    hideTemperature: true,
     initVersion: "0.0.1",
-    language: "Spanish",
-    printerName: "Desktop Local",
-    preheats: [{"name": "Cool","script": "TURN_OFF_HEATERS"}]
+    console: {
+      hideTemperature: true,
+      consoleHeight: 200
+    },
+    general: {
+      language: "Spanish",
+      printerName: "Desktop Local",
+      confirmEmergencyStop: false,
+    },
+    temperature: {
+      autoscaleGraph: true,
+      hideGraph: false,
+      preheats: [{"name": "Cool","script": "TURN_OFF_HEATERS"}]
+    }
   }
 }
 
@@ -56,7 +63,7 @@ const store: StoreOptions<RootState> = {
     file_manager: FileManager
   },
 
-  plugins: [vuexLocal.plugin] // Only Config result persistent in localStorage
+  // plugins: [vuexLocal.plugin] // Only Config result persistent in localStorage
 }
 
 export default new Vuex.Store<RootState>(store)
