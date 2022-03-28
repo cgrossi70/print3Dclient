@@ -12,7 +12,7 @@
             </v-expansion-panel-content>
           </v-expansion-panel >
           <v-expansion-panel >
-            <v-expansion-panel-header  class="my-0 py-0" color="indigo lighten-4">
+            <v-expansion-panel-header class="my-0 py-0" color="indigo lighten-4">
               <span class="text-button">{{ $t('Settings.Sections.Console') }}</span>
             </v-expansion-panel-header>
             <v-expansion-panel-content>

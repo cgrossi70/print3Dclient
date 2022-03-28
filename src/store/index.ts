@@ -44,8 +44,10 @@ const state: RootState = {
       autoscaleGraph: true,
       hideGraph: false,
       preheats: [{"name": "Cool","script": "TURN_OFF_HEATERS"}]
-    }
-  }
+    },
+    remotePrinters: []
+  },
+  announcements: []
 }
 
 Vue.use(Vuex)

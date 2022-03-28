@@ -163,9 +163,15 @@
                 color="amber"
                 v-model="selectedItem"
              > -->
-                <v-list-item  v-for="(item,index) in $store.getters.getPrinters" :key="index">
+                <v-list-item >
+                  <v-list-item-content @click="changePrinter(-1)" >
+                    {{ $store.state.config.general.printerName }}<br>
+                    127.0.0.1:7125
+                  </v-list-item-content>
+                </v-list-item>
+                <v-list-item  v-for="(item,index) in $store.state.config.remotePrinters" :key="index">
                   <v-list-item-content @click="changePrinter(index)" >
-                    {{ item.name }}<br>
+                    {{ item.description }}<br>
                     {{ item.url }}
                   </v-list-item-content>
                   <v-list-item-action>
@@ -207,26 +213,42 @@ export default class RightBarClass extends Vue {
   }
 
   addPrinter (): void {
-    this.$store.commit('addPrinter',{
-      name: this.printerName,
-      url: this.ipAddress
+    
+    this.$store.dispatch('addConfigArrayItem',{
+      "section": "",
+      "key":  "remotePrinters", 
+      "value": {
+        "description": this.printerName,
+        "url": this.ipAddress
+      }
     })
+    
     this.addPrinterDialog = false;
   }
   deletePrinter (index: number): void {
-    this.$store.commit('deletePrinter',index)
+   this.$store.dispatch('deleteConfigArrayItem',{
+      "section": "",
+      "key":  "remotePrinters", 
+      "value": index
+    })
 
   }
   changePrinter (index: number): void {
-    this.rightbar = false;
 
+    this.rightbar = false;
     this.$store.state.printer.printStats.state =  ''
-    this.$store.commit('setPrinterDefault',index)
-    this.$store.commit('websocket/setApiUrl',this.$store.getters.getPrinters[index].url)
-    this.$socket.setUrl('ws://'+this.$store.getters['websocket/getApiUrl']+'/websocket')
+    //this.$store.commit('setPrinterDefault',index)
+    if(index ===-1){
+      this.$store.commit('websocket/setApiUrl','127.0.0.1:7125')
+      this.$socket.setUrl('ws://127.0.0.1:7125/websocket')
+    } else {
+      this.$store.commit('websocket/setApiUrl',this.$store.state.config.remotePrinters[index].url)
+      this.$socket.setUrl('ws://'+this.$store.getters['websocket/getApiUrl']+'/websocket')
+    }
+    
     this.$router.push('/')
     this.$socket.close()
-    }
+  }
   serviceStart (service: string): void{
     this.$socket.sendObj(`machine.services.start`,4645,{"service": service})
   }

@@ -1,5 +1,5 @@
 {
-  "console": {
+  "Console": {
     "HideTemperatures": "Ocultar Temperaturas",
     "console": "Consola",
     "GCodeCommand": "Comandos G-Code"
@@ -114,8 +114,8 @@
     "ConfimEmergencyStopDesc": "Si esta activado se mostrara un pedido de confimacion antes de hacer la parada de emergencia",
     "HideTemperature": "Ocultar Temperaturas",
     "HideTemperatureDesc": "Ocultar los mensajes de temperatura provenientes de la impresora",
-    "ConsoleHeight": "",
-    "ConsoleHeightDesc": "",
+    "ConsoleHeight": "Altura de la Consola",
+    "ConsoleHeightDesc": "Altura de la consola en el dashboard",
     "Temperature": {
       "HideGraph": "Ocultar Grafico",
       "HideGraphDesc": "Ocultar el grafico de Temperatura",
@@ -146,12 +146,12 @@
   "Rightbar": {
     "AddPrinter": "Agregar impresora",
     "Add": "Agregar",
-    "Cancel": "Candelar",
+    "Cancel": "Cancelar",
     "Host": "Anfrition",
-    "Restart": "reiniciar",
+    "Restart": "Reiniciar",
     "Shutdown": "Apagar",
-    "Services": "servicios",
-    "Printers": "impresoras",
+    "Services": "Servicios",
+    "Printers": "Impresoras",
     "PrinterName": "Nombre de la impresora",
     "IP Address": "Direccion IP"
   },

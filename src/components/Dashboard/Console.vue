@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <Block :title="$t('console.console')">
+    <Block :title="$t('Console.console')">
       <span slot="buttons">
           <v-menu
             bottom
@@ -20,7 +20,7 @@
 
             <v-list>
                   <v-list-item class="minHeight36">
-                      <v-checkbox class="mt-0" v-model="hideTemperature" hide-details  :label="$t('console.HideTemperatures')"></v-checkbox>
+                      <v-checkbox class="mt-0" v-model="hideTemperature" hide-details  :label="$t('Console.HideTemperatures')"></v-checkbox>
                   </v-list-item>
               </v-list>
           </v-menu>
@@ -34,7 +34,7 @@
                       class="pt-0 to_uppercase"
                       v-model = "command"
                       height = "20px"
-                      :placeholder = "$t('console.GCodeCommand')"
+                      :placeholder = "$t('Console.GCodeCommand')"
                   >
                   </v-text-field>
               </v-col>

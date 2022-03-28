@@ -1,5 +1,5 @@
 import { MutationTree } from "vuex"
-import { PrinterState } from "@/store/printer/types.ts"
+import { PrinterState } from "@/store/printer/types"
 
 interface dir {
   typeRow: string,
@@ -188,6 +188,7 @@ export const mutations: MutationTree<PrinterState> = {
       }
     })
   },
+ 
   addGraphTemperature(state,payload){
     if(payload.sensor === 'pi'){
       state.graphTemperatures.piTemperature.shift()
@@ -199,5 +200,6 @@ export const mutations: MutationTree<PrinterState> = {
       state.graphTemperatures.bedTemperature.shift()
       state.graphTemperatures.bedTemperature.push(payload.value)
     }
-  }
+  },
+
 }

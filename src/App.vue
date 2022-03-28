@@ -1,7 +1,4 @@
 // TODO: Ver el tema de las macros
-// TODO: HAcer el dialogo de Settings
-// FIXME: terminar los graficos de temperatura
-// FIXME: terminar el file manager y el Fileeditor
 
 <template>
   <v-app >

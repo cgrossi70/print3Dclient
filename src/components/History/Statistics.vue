@@ -41,7 +41,7 @@
 </v-container>
 </template>
 <script lang="ts">
-import helpers from '@/mixins/helpers.ts'
+import helpers from '@/mixins/helpers'
 import Block from '@/components/General/Block.vue'
 
 import { Component, Vue} from 'vue-property-decorator'

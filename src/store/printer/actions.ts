@@ -12,6 +12,7 @@ export const actions: ActionTree<PrinterState,RootState> = {
         "color": "black"
       })
   },
+ 
   resetGCodeFiles: function(context){
     context.commit('resetGCodeFiles')
   },
@@ -40,6 +41,7 @@ export const actions: ActionTree<PrinterState,RootState> = {
         //context.commit('setIsReady',true)
     }
     if (event.method === 'notify_gcode_response') {
+        //alert( event.params[0])
         const myRegExp = new RegExp('B.*[0-9]*\\.[0-9]+\\s/[0-9]*\\.[0-9]+\\sT0:[0-9]*\\.[0-9]+\\s/[0-9]*\\.[0-9]+')
         if( context.getters.getHideConsoleTemp && !myRegExp.test( event.params[0]) ||
             !context.getters.getHideConsoleTemp){
@@ -55,27 +57,6 @@ export const actions: ActionTree<PrinterState,RootState> = {
     }
 
     if(event.method === 'notify_status_update'){
-
-      /*
-      if( event.params[0]["temperature_sensor raspberry_pi"].temperature ||
-          event.params[0]["extruder"].temperature ||
-          event.params[0]["heater_bed"].temperature) {
-        if(event.params[0]["temperature_sensor raspberry_pi"].temperature)
-          context.commit('setPiTemperature',event.params[0]["temperature_sensor raspberry_pi"].temperature)
-        else
-          context.commit('addGraphTemperature',{sensor: 'pi',value: context.getters.getGraphTemperatures.piTemperature[1999]})
-        if(event.params[0]["extruder"].temperature)
-          context.commit('addGraphTemperature',{sensor: 'extruder',value: event.params[0].extruder.temperature})
-        else
-          context.commit('addGraphTemperature',{sensor: 'extruder',value: context.getters.getGraphTemperatures.extruderTemperature[1999]})
-        if(event.params[0]["heater_bed"].temperature)
-          context.commit('addGraphTemperature',{sensor: 'bed',value: event.params[0].heater_bed.temperature})
-        else
-          context.commit('addGraphTemperature',{sensor: 'bed',value: context.getters.getGraphTemperatures.bedTemperature[1999]})
-      }
-      */
-
-
       if(event.params[0]['webhooks'])
         console.log(event.params[0]['webhooks'])
       if(event.params[0]['system_stats'])
@@ -115,21 +96,10 @@ export const actions: ActionTree<PrinterState,RootState> = {
       context.commit('setMoonrakerWarnings',event.result)
     }
     else if (event.id === 5644) {
-
       if(event.result)
         context.commit('setGCodesFiles',event.result)
-
     }
-  /*  else if (event.id === 4654) {
-      // Este comando esta solo porque al enfriar no manda el corte de
-      // power en la subscripcion bed y heater ver si en sucesivas versiones
-      // Se arregla
-      console.log(event.result.status.extruder)
-      console.log(event.result.status.heater_bed)
-      context.commit('setExtruderParameters',event.result.status.extruder)
-      context.commit('setBedParameters',event.result.status.heater_bed)
-
-    }*/
+    
     else if (event.id === 111111) {
       if (event.result.status['fan'])
         context.commit('setFanSpeed',event.result.status.fan)

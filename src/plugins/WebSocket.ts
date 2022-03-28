@@ -34,7 +34,7 @@ export class WebSocketClient {
       console.debug('Conectado y obteniendo el socket Id')
       this.store.dispatch('websocket/setReconnectErrorState',false)
       this.sendObj("server.connection.identify",333333,{
-        "client_name": "moontest",
+        "client_name": "print3dclient",
         "version": "0.0.1",
         "type": "web",
         "url": ""
@@ -49,6 +49,10 @@ export class WebSocketClient {
               "namespace": "print3Dclient",
               "key": "config", 
               "value": this.store.state.config})
+            this.sendObj("server.database.post_item",4654,{
+              "namespace": "print3Dclient",
+              "key": "announcements", 
+              "value": this.store.state.announcements})
           }
           else {
             this.store.dispatch('setSnackbar',{
@@ -75,7 +79,7 @@ export class WebSocketClient {
           this.sendObj("server.files.get_directory",5644,{ "path": "gcodes", "extended": true })
           this.sendObj("server.files.get_directory",777777,{"path": this.store.getters['file_manager/getPath'], "extended": false})
 
-          //this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "config"})
+          //this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "announcements"})
           //this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "initVersion"})
           /*this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "preheats"})
           this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "printerName"})
@@ -85,8 +89,9 @@ export class WebSocketClient {
           this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "consoleHeight",})
           this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "confirmEmergencyStop"})
           this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "autoscaleGraph"})*/
-
-          this.sendObj("server.database.get_item",5644,{"namespace": "print3Dclient"})
+          
+          this.sendObj("server.database.get_item",9999,{"namespace": "print3Dclient"})
+          this.sendObj("server.database.get_item",9999,{"namespace": "announcements"})
 
           this.sendObj("printer.objects.subscribe",111111,{
             "objects": {

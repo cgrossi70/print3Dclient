@@ -80,6 +80,8 @@ export interface HeaterBed {
   max_temp: number
 }
 
+
+
 export interface PrinterState {
     fanSpeed: number,
     printStats: PrintStatistics,
@@ -101,5 +103,5 @@ export interface PrinterState {
         extruderTemperature: number[],
         bedTemperature: number[],
         piTemperature: number[]
-    },
+    }
 }

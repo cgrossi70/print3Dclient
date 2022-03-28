@@ -1,9 +1,9 @@
 import { Module } from 'vuex'
-import { PrinterState } from '@/store/printer/types.ts'
+import { PrinterState } from '@/store/printer/types'
 import { RootState } from '@/store/types'
-import { getters } from "@/store/printer/getters.ts"
-import { mutations } from "@/store/printer/mutations.ts"
-import { actions } from "@/store/printer/actions.ts"
+import { getters } from "@/store/printer/getters"
+import { mutations } from "@/store/printer/mutations"
+import { actions } from "@/store/printer/actions"
 
 const piTtemperatures = []
 const extruderTemperatures = []
@@ -76,11 +76,13 @@ const state: PrinterState = {
     }
   },
   updateMessages: [],
+  
   graphTemperatures: {
       extruderTemperature: extruderTemperatures,
       bedTemperature: bedTemperatures,
       piTemperature: piTtemperatures
   },
+  
 }
 
 export const Printer: Module<PrinterState,RootState> = {

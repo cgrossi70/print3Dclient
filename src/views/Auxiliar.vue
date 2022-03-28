@@ -12,7 +12,7 @@
           </v-toolbar>
           <v-card-text class="text-caption">
             <pre style="white-space: pre-wrap">
-              {{ $store.state.printer}}
+              {{ $store.state.config}}
             </pre>
           </v-card-text>
         </v-card>

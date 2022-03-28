@@ -19,11 +19,17 @@ export interface Console {
   consoleHeight: number
 }
 
+export interface Printer {
+  description: string
+  url: string
+}
+
 export interface Config {
   initVersion: string 
   console: Console
   temperature: Temperature
   general: General
+  remotePrinters: Printer[]
 }
 
 export interface Preheat {
@@ -37,9 +43,19 @@ export interface Snackbar {
   color: string
 }
 
+export interface Announcement{
+  id: string,
+  title: string,
+  description: string,
+  url: string,
+  dismissed: boolean
+}
+
 export interface RootState {
   sidebar: boolean;
   rightbar: boolean;
-  config: Config;
   snackbar: Snackbar;
+  config: Config;
+  announcements: Announcement[];
+  
 }

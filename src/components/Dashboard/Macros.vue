@@ -6,6 +6,7 @@
           v-for="(macro,id) in macros" :key="id"
           class = "ma-1"
           dark
+          small
           @click="handleMacro(macro.split(' ')[1])"
           color="cyan darken-2"
         >
