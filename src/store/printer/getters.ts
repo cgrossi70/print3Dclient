@@ -47,10 +47,5 @@ export const getters: GetterTree<PrinterState,RootState> = {
   getGCodes(state){
     return state.gCodes
   },
-  getUpdateMessages(state){
-    return state.updateMessages
-  },
-  getGraphTemperatures(state){
-    return state.graphTemperatures
-  },
+  
 }

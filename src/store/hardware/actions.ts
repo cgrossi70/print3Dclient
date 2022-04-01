@@ -1,6 +1,6 @@
 import { ActionTree } from 'vuex'
-import { HardwareState } from "@/store/hardware/types.ts"
-import { RootState } from "@/store/types.ts"
+import { HardwareState } from "@/store/hardware/types"
+import { RootState } from "@/store/types"
 
 
 export const actions: ActionTree<HardwareState,RootState> = {

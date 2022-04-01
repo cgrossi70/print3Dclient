@@ -12,7 +12,7 @@
           </v-toolbar>
           <v-card-text class="text-caption">
             <pre style="white-space: pre-wrap">
-              {{ $store.state.config}}
+              {{ $store.state.printer.bed_mesh }}
             </pre>
           </v-card-text>
         </v-card>

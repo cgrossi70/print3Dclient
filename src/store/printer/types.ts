@@ -98,10 +98,6 @@ export interface PrinterState {
       extruder: Extruder,
       heaterBed: HeaterBed,
     }
-    updateMessages: string[],
-    graphTemperatures: {
-        extruderTemperature: number[],
-        bedTemperature: number[],
-        piTemperature: number[]
-    }
+    
+   
 }

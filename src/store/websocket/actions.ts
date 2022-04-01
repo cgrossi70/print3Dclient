@@ -1,6 +1,6 @@
 import { ActionTree } from 'vuex'
-import { WebSocketState } from "@/store/websocket/types.ts"
-import { RootState } from "@/store/types.ts"
+import { WebSocketState } from "@/store/websocket/types"
+import { RootState } from "@/store/types"
 
 export const actions: ActionTree<WebSocketState,RootState> = {
   setConnectedState(context,payload){

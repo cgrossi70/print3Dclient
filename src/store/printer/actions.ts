@@ -16,9 +16,7 @@ export const actions: ActionTree<PrinterState,RootState> = {
   resetGCodeFiles: function(context){
     context.commit('resetGCodeFiles')
   },
-  resetUpdateMessages: function(context){
-    context.commit('resetUpdateMessages')
-  },
+
   setRootDirectory: function (context,payload) {
     context.commit('setRootDirectory',payload)
   },
@@ -52,9 +50,7 @@ export const actions: ActionTree<PrinterState,RootState> = {
             })
         }
     }
-    if (event.method === 'notify_update_response'){
-      context.commit('setUpdateMessage',event.params[0].message)
-    }
+   
 
     if(event.method === 'notify_status_update'){
       if(event.params[0]['webhooks'])

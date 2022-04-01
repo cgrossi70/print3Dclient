@@ -253,9 +253,9 @@ export default class ChartClass extends Vue {
   get masterStatus() {
     return this.$store.getters['printer/getMasterStatus'].state
   }
-  get graphTemperatures(){
-    return this.$store.getters['printer/getGraphTemperatures']
-  }
+  /*get graphTemperatures(){
+    return this.$store.getters['printer/temperature_graph/getGraphTemperatures']
+  }*/
 
   // Para que se active el tiem la primera vez cuando detecta une stado valido de la impresora
   @Watch('masterStatus')

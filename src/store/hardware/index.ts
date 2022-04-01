@@ -1,9 +1,10 @@
 import { Module } from 'vuex'
 import { RootState } from '@/store/types'
-import { HardwareState } from "@/store/hardware/types.ts"
-import { getters } from "@/store/hardware/getters.ts"
-import { mutations } from "@/store/hardware/mutations.ts"
-import { actions } from "@/store/hardware/actions.ts"
+import { HardwareState } from "@/store/hardware/types"
+import { getters } from "@/store/hardware/getters"
+import { mutations } from "@/store/hardware/mutations"
+import { actions } from "@/store/hardware/actions"
+import { Update } from "@/store/hardware/updates/index"
 
 const state: HardwareState = {
   hostCpuInfo: {
@@ -24,5 +25,8 @@ export const Hardware: Module<HardwareState,RootState> = {
   getters,
   mutations,
   actions,
+  modules: {
+    update: Update
+  }
 
 }

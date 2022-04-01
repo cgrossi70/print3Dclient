@@ -6,6 +6,7 @@ import Console from "@/views/Console.vue"
 import Hardware from "@/views/Hardware.vue"
 import GCodes from "@/views/GCodes.vue"
 import Settings from "@/views/Settings.vue"
+import Autolevel from "@/views/Autolevel.vue"
 
 Vue.use(VueRouter)
 
@@ -46,6 +47,13 @@ const routes: AppRoute[] = [
     name: 'Settings',
     component: Settings,
     icon: "mdi-cog"
+
+  },
+  {
+    path: '/autolevel',
+    name: 'Autolevel',
+    component: Autolevel,
+    icon: "mdi-spirit-level"
 
   },
 ]

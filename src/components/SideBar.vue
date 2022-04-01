@@ -4,15 +4,20 @@
         <v-list dense>
             <v-list-item v-for="(item, index) in drawerItems" :key="index">
             <v-list-item-title class="white--text">
-                <v-icon small class="white--text">{{ item.icon }}</v-icon>
-                <router-link :to="item.path">
-                    <span class="text-uppercase pl-5 white--text">
-                        {{ $t('Sidebar.'+item.name) }}
-                    </span>
-                </router-link>
+              <router-link :to="item.path">
+                <v-icon class="white--text">{{ item.icon }}</v-icon>
+                <span class="text-uppercase pl-5 white--text">
+                    {{ $t('Sidebar.'+item.name) }}
+                </span>
+              </router-link>
             </v-list-item-title>
             </v-list-item>
         </v-list>
+        <template  v-slot:append>
+          <span class="ml-2 font-weight-bold white--text">
+            Version: {{ $store.state.hardware.update.updates.version_info['print3Dclient'].version}}
+          </span>
+        </template>
       </v-navigation-drawer>
     </v-container>
 </template>

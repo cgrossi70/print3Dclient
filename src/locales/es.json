@@ -138,10 +138,13 @@
     "History": "Historial",
     "Settings": "Configuracion",
     "Hardware": "Maquina",
-    "": ""
+    "Autolevel": "Autonivelado"
   },
   "Menubar": {
-    "EmergencyStop": "Parada de emergencia"
+    "EmergencyStop": "Parada de emergencia",
+    "EmergencyStopMessage": "¿Esta Seguro?",
+    "No": "No",
+    "Yes": "Si"
   },
   "Rightbar": {
     "AddPrinter": "Agregar impresora",

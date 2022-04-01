@@ -4,6 +4,8 @@ import { RootState } from '@/store/types'
 import { getters } from "@/store/printer/getters"
 import { mutations } from "@/store/printer/mutations"
 import { actions } from "@/store/printer/actions"
+import { BedMesh } from "@/store/printer/bed_mesh/index"
+//import { TemperatureGraph } from "@/store/printer/temperature_chart/index"
 
 const piTtemperatures = []
 const extruderTemperatures = []
@@ -74,15 +76,7 @@ const state: PrinterState = {
     heaterBed: {
       max_temp: 0
     }
-  },
-  updateMessages: [],
-  
-  graphTemperatures: {
-      extruderTemperature: extruderTemperatures,
-      bedTemperature: bedTemperatures,
-      piTemperature: piTtemperatures
-  },
-  
+  }
 }
 
 export const Printer: Module<PrinterState,RootState> = {
@@ -90,5 +84,9 @@ export const Printer: Module<PrinterState,RootState> = {
   state,
   getters,
   mutations,
-  actions
+  actions,
+  modules:{
+    bed_mesh: BedMesh,
+    //temperature_graph: TemperatureGraph
+  }
 }

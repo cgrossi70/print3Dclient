@@ -1,5 +1,5 @@
-import {Store} from 'vuex'
 import _Vue from 'vue'
+import {Store} from 'vuex'
 import {RootState} from '@/store/types'
 
 declare module 'vue/types/vue' {
@@ -27,9 +27,11 @@ export class WebSocketClient {
   }
 
   connect(): void {
+    // Intento conectarme al Weboscket
     console.debug('Connecting to '+this.url)
     this.socket = new WebSocket(this.url);
 
+    // Cuando la conexion se abre trato de obtener la identificacion
     this.socket.onopen = ()=> {
       console.debug('Conectado y obteniendo el socket Id')
       this.store.dispatch('websocket/setReconnectErrorState',false)
@@ -63,14 +65,16 @@ export class WebSocketClient {
           }
         }
 
-
         if(event.id === 333333) {
+          // Respueste a server.connection.identify (OBTENGO IDENTIFICACION DE LA CONNEXION)
           console.debug(`WebsocketId obtenido (${event.result.connection_id}) procediendo a registrar subscripciones`)
           this.store.commit('websocket/setWebsocketId',event.result.connection_id)
           this.store.dispatch('websocket/setConnectedState',true)
           this.store.dispatch('websocket/setReconnectErrorState',false)
           this.store.dispatch('printer/resetGCodeFiles')
           this.store.dispatch('hardware/resetServices')
+          
+          // Estoy conectado al websocket
           this.sendObj("server.info",9546)
           this.sendObj("printer.info",5445)
           this.sendObj("printer.objects.list",1454)
@@ -78,23 +82,17 @@ export class WebSocketClient {
           this.sendObj("server.history.totals", 5656)
           this.sendObj("server.files.get_directory",5644,{ "path": "gcodes", "extended": true })
           this.sendObj("server.files.get_directory",777777,{"path": this.store.getters['file_manager/getPath'], "extended": false})
+          this.sendObj("machine.update.status",4644,{"refresh": false})
 
-          //this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "announcements"})
+          //this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "config"})
           //this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "initVersion"})
-          /*this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "preheats"})
-          this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "printerName"})
-          this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "language"})
-          this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "hideTemperature"})
-          this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "hideGraph"})
-          this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "consoleHeight",})
-          this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "confirmEmergencyStop"})
-          this.sendObj("server.database.delete_item",123414,{"namespace": "print3Dclient","key": "autoscaleGraph"})*/
           
           this.sendObj("server.database.get_item",9999,{"namespace": "print3Dclient"})
           this.sendObj("server.database.get_item",9999,{"namespace": "announcements"})
 
           this.sendObj("printer.objects.subscribe",111111,{
             "objects": {
+              "webhooks": ["state","state_message"],
               "print_stats": ["print_duration", "total_duration", "filament_used","filename", "state", "message"],
               "motion_report": ["live_position"],
               "heaters": ["available_sensors","available_heaters"],
@@ -105,16 +103,19 @@ export class WebSocketClient {
               "mcu": ["mcu_constants","mcu_version"],
               "system_stats": ["sysload"],
               "temperature_host raspberry_pi": ["temperature"],
-              "webhooks": ["state","state_message"],
+              "bed_mesh": ["profile_name","mesh_min","mesh_max","probed_matrix","mesh_matrix","profiles"],
             }
           })
         }
+        // Ya estoy conectado hice la inicializacion del socket y las suscripciones asi que despacho los 
+        // eventos a las actions de los distintos mudolos de Vuex 
         else {
           this.store.dispatch('ON_MESSAGE',payload.data)
           this.store.dispatch('file_manager/ON_MESSAGE',payload.data)
           this.store.dispatch('hardware/ON_MESSAGE',payload.data)
+          this.store.dispatch('hardware/update/ON_MESSAGE',payload.data)
           this.store.dispatch('printer/ON_MESSAGE',payload.data)
-          //this.store.dispatch('websocket/ON_MESSAGE',payload.data)
+          this.store.dispatch('printer/bed_mesh/ON_MESSAGE',payload.data)
         }
     };
 
@@ -141,6 +142,7 @@ export class WebSocketClient {
       }
     };
   }
+
   close(): void {
     this.store.dispatch('websocket/setConnectedState',false)
     this.store.dispatch('websocket/setReconnectErrorState',false)
@@ -148,6 +150,15 @@ export class WebSocketClient {
     this.socket.close()
   }
 
+  /*queryPrintStatus(){
+    this.sendObj('printer.objects.query',5664,{ 
+      "objects": {
+        "webhooks": null,
+        "virtual_sdcard": null,
+        "print_stats": null
+      }
+    })
+  }*/
 
   sendCommand(command: string): void {
     this.store.dispatch('printer/addConsoleCommand', command)

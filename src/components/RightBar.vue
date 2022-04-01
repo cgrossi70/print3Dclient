@@ -98,7 +98,7 @@
                 {{ $t('Rightbar.Shutdown') }}
               </v-col>
               <v-col class="my-0 pb-0 text-right">
-                <v-icon color="red lighten-2">
+                <v-icon @click="handleShutdownHost" color="red lighten-2">
                   mdi-power
                 </v-icon>
               </v-col>
@@ -193,6 +193,7 @@
           </v-card-text>
         </v-card>
 
+
       </v-navigation-drawer>
 
 </template>
@@ -210,6 +211,10 @@ export default class RightBarClass extends Vue {
   }
   set rightbar(value: boolean) {
     this.$store.state.rightbar = value
+  }
+
+  handleShutdownHost(): void {
+    this.$socket.sendObj('machine.shutdown',4665)
   }
 
   addPrinter (): void {

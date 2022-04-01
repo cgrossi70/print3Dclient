@@ -161,12 +161,7 @@ export const mutations: MutationTree<PrinterState> = {
     state.gCodes.root = payload.newRoot
     state.gCodes.parent = payload.newParent
   },
-  setUpdateMessage(state,payload){
-    state.updateMessages.push(payload)
-  },
-  resetUpdateMessages(state){
-    state.updateMessages=[]
-  },
+  
   setMcuInfo(state,payload){
     if(payload.mcu_constants){
       state.mcuInfo.name = payload.mcu_constants.MCU
@@ -188,18 +183,6 @@ export const mutations: MutationTree<PrinterState> = {
       }
     })
   },
- 
-  addGraphTemperature(state,payload){
-    if(payload.sensor === 'pi'){
-      state.graphTemperatures.piTemperature.shift()
-      state.graphTemperatures.piTemperature.push(payload.value)
-    } else if(payload.sensor === 'extruder') {
-      state.graphTemperatures.extruderTemperature.shift()
-      state.graphTemperatures.extruderTemperature.push(payload.value)
-    } else if(payload.sensor === 'bed') {
-      state.graphTemperatures.bedTemperature.shift()
-      state.graphTemperatures.bedTemperature.push(payload.value)
-    }
-  },
+
 
 }

@@ -34,6 +34,7 @@ import EndStops from "@/components/Hardware/EndStops.vue";
 import Services from "@/components/Hardware/Services.vue";
 import Updates from "@/components/Hardware/Updates.vue";
 import ConfigFiles from "@/components/Hardware/ConfigFiles.vue";
+import Auxiliar from "@/views/Auxiliar.vue";
 import Vue from 'vue'
 
 export default Vue.extend ({
@@ -46,6 +47,7 @@ export default Vue.extend ({
     Services,
     Updates,
     ConfigFiles,
+    Auxiliar
   }
 })
 </script>

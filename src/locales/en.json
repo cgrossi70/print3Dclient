@@ -128,7 +128,10 @@
     "": ""
   },
   "Menubar": {
-    "EmergencyStop": "Emergency Stop"
+    "EmergencyStop": "Emergency Stop",
+    "EmergencyStopMessage": "",
+    "No": "",
+    "Yes": ""
   },
   "Rightbar": {
     "AddPrinter": "Add Printer",
@@ -144,5 +147,10 @@
   },
   "Macros": {
     "Macros": ""
+  },
+  "Console": {
+    "console": "",
+    "HideTemperatures": "",
+    "GCodeCommand": ""
   }
 }

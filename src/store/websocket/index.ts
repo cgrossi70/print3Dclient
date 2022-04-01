@@ -1,9 +1,9 @@
 import { Module } from 'vuex'
 import { RootState } from '@/store/types'
-import { WebSocketState } from "@/store/websocket/types.ts"
-import { getters } from "@/store/websocket/getters.ts"
-import { mutations } from "@/store/websocket/mutations.ts"
-import { actions } from "@/store/websocket/actions.ts"
+import { WebSocketState } from "@/store/websocket/types"
+import { getters } from "@/store/websocket/getters"
+import { mutations } from "@/store/websocket/mutations"
+import { actions } from "@/store/websocket/actions"
 
 const state: WebSocketState = {
   api_url: '',

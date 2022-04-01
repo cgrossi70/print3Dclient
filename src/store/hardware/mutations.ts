@@ -1,5 +1,5 @@
 import { MutationTree } from "vuex"
-import { HardwareState } from "@/store/hardware/types.ts"
+import { HardwareState } from "@/store/hardware/types"
 
 export const mutations: MutationTree<HardwareState> = {
   setHostCpuInfo (state,payload) {
@@ -23,7 +23,7 @@ export const mutations: MutationTree<HardwareState> = {
   },
   updateService (state,payload) {
     for (const property in payload) {
-      state.services.find(function(service) {
+      state.services.find(function(service: any) {
         if(service.name == property){
           service.active_state = payload[property].active_state;
           service.sub_state = payload[property].sub_state

@@ -24,9 +24,7 @@ TODO: Solo poner en el menu los servicios que existen
               </p>
             </div>
         </v-card-text>
-
         <v-divider></v-divider>
-
         <v-card-actions>
           <v-row>
             <v-col>
@@ -71,103 +69,39 @@ TODO: Solo poner en el menu los servicios que existen
             v-if="isRefreshing">
         </v-progress-circular>
       </span>
-
       <v-card-text slot="content">
-        <v-row>
+        <v-row v-for="(service,id) in $store.state.hardware.update.updates.version_info" :key="id">
           <v-col>
             <v-row>
-              <v-card-title class="text-body-1 grey--text pb-0 pt-2">{{ $t('Updates.System') }}</v-card-title>
+              <v-card-title class="text-body-1 grey--text pb-0 pt-2">{{ id }}</v-card-title>
             </v-row>
-            <v-row class="text-caption ml-1">{{ system.package_count }} {{ $t('Updates.Packages') }}</v-row>
+            <v-row v-if="id !== 'system'" class="text-caption ml-1">
+              {{ $store.state.hardware.update.updates.version_info[id].version }} ->  {{ $store.state.hardware.update.updates.version_info[id].remote_version }}
+            </v-row>    
+            <v-row v-if="id === 'system'" class="text-caption ml-1">{{ system.package_count }} {{ $t('Updates.Packages') }}</v-row>
           </v-col>
           <v-col align="right">
             <v-btn
               color="green darken-3"
-              :outlined="system.package_count  === 0"
-              @click="system.package_count !==0 ? updateService('system') : UpToDate('System')"
+              :outlined="!serviceNeedUpdate(id)"
+              @click="serviceNeedUpdate(id) ? updateService(id) : UpToDate(id)"
               small
               dark
             >
-              {{system.package_count  !== 0 ? $t('Updates.Update') : $t('Updates.UpToDate') }}
-            </v-btn>
-
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col>
-            <v-row>
-              <v-card-title class="text-body-1 grey--text pb-0 pt-2">Klipper</v-card-title>
-            </v-row>
-            <v-row class="text-caption ml-1">{{ klipper.version }} ->  {{ klipper.remote_version }}</v-row>
-          </v-col>
-          <v-col align="right">
-            <v-btn
-              color="green darken-3"
-              :outlined="klipper.version ===  klipper.remote_version"
-              @click="klipper.version !== klipper.remote_version ? updateService('klipper') : UpToDate('Klipper')"
-              small
-              dark
-            >
-              {{klipper.version !== klipper.remote_version ? $t('Updates.Update') : $t('Updates.UpToDate')}}
-            </v-btn>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col>
-            <v-row>
-              <v-card-title class="text-body-1 grey--text pb-0 pt-2">Moonraker</v-card-title>
-            </v-row>
-            <v-row class="text-caption ml-1">{{ moonraker.version }} ->  {{ moonraker.remote_version }}</v-row>
-          </v-col >
-          <v-col align="right">
-            <v-btn
-              color="green darken-3"
-              :outlined="moonraker.version === moonraker.remote_version"
-              @click="moonraker.version !== moonraker.remote_version ? updateService('moonraker') : UpToDate('Moonraker')"
-              small
-              dark
-            >
-              {{moonraker.version !== moonraker.remote_version ? $t('Updates.Update') : $t('Updates.UpToDate')}}
-            </v-btn>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col>
-            <v-row>
-              <v-card-title class="text-body-1 grey--text pb-0 pt-2">print3Dclient</v-card-title>
-            </v-row>
-            <v-row class="text-caption ml-1">{{ print3Dclient.version }} ->  {{ print3Dclient.remote_version }}</v-row>
-          </v-col >
-          <v-col align="right">
-            <v-btn
-              color="green darken-3"
-              :outlined="print3Dclient.version === print3Dclient.remote_version"
-              @click="print3Dclient.version !== print3Dclient.remote_version ? updateClient('print3Dclient') : UpToDate('print3Dclient')"
-              small
-              dark
-            >
-              {{print3Dclient.version !== print3Dclient.remote_version ? $t('Updates.Update') : $t('Updates.UpToDate')}}
+              {{ serviceNeedUpdate(id) ? $t('Updates.Update') : $t('Updates.UpToDate') }}
             </v-btn>
           </v-col>
         </v-row>
         <v-row>
           <v-col align="center">
             <v-btn
-              @click="moonraker.version !== moonraker.remote_version ||
-                      klipper.version !== klipper.remote_version ||
-                      system.package_count !==0 ? updateService('full') : UpToDate('Todo ')"
-              :outlined="moonraker.version === moonraker.remote_version &&
-                         klipper.version === klipper.remote_version &&
-                         system.package_count === 0"
+              @click="$store.getters['hardware/update/needUpdate'] ? updateService('full') : UpToDate('Todo ')"
+              :outlined="!$store.getters['hardware/update/needUpdate']"
               small
               dark
               color="green darken-4"
             >
-              {{  moonraker.version === moonraker.remote_version &&
-                  klipper.version === klipper.remote_version &&
-                  system.package_count === 0 ? $t('Updates.UpToDate')  : $t('Updates.UpdateAll') }}
+              {{  !$store.getters['hardware/update/needUpdate'] ? $t('Updates.UpToDate')  : $t('Updates.UpdateAll') }}
             </v-btn>
 
           </v-col>
@@ -188,10 +122,6 @@ import Block from '@/components/General/Block.vue'
 })
 export default class UpdatesClass extends Vue {
   dialog = false
-  klipper = ''
-  moonraker = ''
-  print3Dclient = ''
-  system = ''
   servicio = ''
   client=''
   isRefreshing = false
@@ -199,12 +129,31 @@ export default class UpdatesClass extends Vue {
   updateError = false
 
   get updateMessages (): string[] {
-    return this.$store.getters['printer/getUpdateMessages']
+    return this.$store.getters['hardware/update/getUpdateMessages']
   }
   get webSocketId(): number {
     return this.$store.getters['websocket/getId']
   }
 
+  get moonraker(){
+    return this.$store.state.hardware.update.updates.version_info.moonraker
+  }
+  get klipper(){
+    return this.$store.state.hardware.update.updates.version_info.klipper
+  }
+  get system(){
+    return this.$store.state.hardware.update.updates.version_info.system
+  }
+  get print3Dclient(){
+    return this.$store.state.hardware.update.updates.version_info.print3Dclient
+  }
+
+  serviceNeedUpdate(service: string): boolean{
+    if(service === 'system')
+      return this.$store.state.hardware.update.updates.version_info.system.package_count === 0 ? false : true;
+    else 
+      return this.$store.state.hardware.update.updates.version_info[service].version === this.$store.state.hardware.update.updates.version_info[service].remote_version ? false : true;
+  }
 
   UpToDate (service: string):void {
     this.$store.dispatch('setSnackbar',{
@@ -231,11 +180,7 @@ export default class UpdatesClass extends Vue {
     this.isRefreshing = true;
     axios.get(url)
     .then((response) => {
-        console.log(response.data.result)
-        this.system = response.data.result.version_info.system;
-        this.klipper = response.data.result.version_info.klipper;
-        this.moonraker = response.data.result.version_info.moonraker;
-        this.print3Dclient = response.data.result.version_info.print3Dclient;
+        this.$store.dispatch('hardware/update/setUpdates',response.data)
         this.isRefreshing = false;
     })
     .catch((e) => {
@@ -247,7 +192,7 @@ export default class UpdatesClass extends Vue {
     this.dialog=true;
     this.servicio=servicio
 
-    this.$store.dispatch('printer/resetUpdateMessages')
+    this.$store.dispatch('hardware/update/resetUpdateMessages')
     this.isUpgrading = true
 
     const url = `http://${this.$store.getters['websocket/getApiUrl']}/machine/update/${servicio}`;
@@ -265,7 +210,7 @@ export default class UpdatesClass extends Vue {
     this.dialog=true;
     this.client=client
 
-    this.$store.dispatch('printer/resetUpdateMessages')
+    this.$store.dispatch('hardware/update/resetUpdateMessages')
     this.isUpgrading = true
 
     const url = `http://${this.$store.getters['websocket/getApiUrl']}/machine/update/client?name=${client}`;
@@ -285,9 +230,6 @@ export default class UpdatesClass extends Vue {
 
   updated():void {
     this.$nextTick(() => this.scrollToEnd());
-  }
-  mounted (): void {
-    this.getUpdates(false)
   }
 }
 </script>
